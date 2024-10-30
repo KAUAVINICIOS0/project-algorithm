@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class SelectionSort {
   
-    public static List<Integer> selectionSort(List<Integer> data) {
+    public static List<Integer> sort(List<Integer> data) {
         int n = data.size();
 
         // Um por um, move a fronteira do array não ordenado
