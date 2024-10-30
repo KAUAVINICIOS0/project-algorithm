@@ -24,11 +24,20 @@ async function fetchSortingTimes() {
         const mergeSortTime = await mergeSortResponse.json();
         document.getElementById('mergeSortTime').innerText = `${mergeSortTime.sortTime} ms`;
 
+        // Selection Sort
+        const selectionSortResponse = await fetch('http://localhost:8085/api/selectionsort/sort', {mode: "cors", cache: "no-store" });
+        if (!selectionSortResponse.ok) {
+            throw new Error(selectionSortResponse.status);
+        }
+        const selectionSortTime = await selectionSortResponse.json();
+        document.getElementById('selectionSortTime').innerText = `${selectionSortTime.sortTime} ms`;
+
     } catch (error) {
         console.error('Erro ao buscar os tempos de ordenação:', error);
         document.getElementById('bubbleSortTime').innerText = "Erro ao buscar o tempo.";
         document.getElementById('quickSortTime').innerText = "Erro ao buscar o tempo.";
         document.getElementById('mergeSortTime').innerText = "Erro ao buscar o tempo.";
+        document.getElementById('selectionSortTime').innerText = "Erro ao buscar o tempo.";
     }
     
 }
